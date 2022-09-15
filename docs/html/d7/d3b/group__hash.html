@@ -99,14 +99,14 @@ $(document).ready(function(){initNavTree('d7/d3b/group__hash.html','../../'); in
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga690b2c54de55dbd3bc31d004ffef8220"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3b/group__hash.html#ga690b2c54de55dbd3bc31d004ffef8220">hash</a> (const char *input)</td></tr>
-<tr class="memdesc:ga690b2c54de55dbd3bc31d004ffef8220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process input string and return hashed value.  <a href="../../d7/d3b/group__hash.html#ga690b2c54de55dbd3bc31d004ffef8220">More...</a><br /></td></tr>
-<tr class="separator:ga690b2c54de55dbd3bc31d004ffef8220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ea254c8281f96f20553763070dfcd06"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3b/group__hash.html#ga6ea254c8281f96f20553763070dfcd06">hash</a> (const char *input, const signed long long length)</td></tr>
+<tr class="memdesc:ga6ea254c8281f96f20553763070dfcd06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process input string and return hashed value.  <a href="../../d7/d3b/group__hash.html#ga6ea254c8281f96f20553763070dfcd06">More...</a><br /></td></tr>
+<tr class="separator:ga6ea254c8281f96f20553763070dfcd06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga690b2c54de55dbd3bc31d004ffef8220" name="ga690b2c54de55dbd3bc31d004ffef8220"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga690b2c54de55dbd3bc31d004ffef8220">&#9670;&nbsp;</a></span>hash()</h2>
+<a id="ga6ea254c8281f96f20553763070dfcd06" name="ga6ea254c8281f96f20553763070dfcd06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6ea254c8281f96f20553763070dfcd06">&#9670;&nbsp;</a></span>hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -115,13 +115,29 @@ Functions</h2></td></tr>
           <td class="memname">char * hash </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const signed long long&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Process input string and return hashed value. </p>
+<p >How it works:</p><ol type="1">
+<li>Allocate output array, check for errors for input value and allocated array.</li>
+<li>Checks if the input is shorter or longer than 64 chars array. 2.1. If it is shorter, it will append chars, that were generated randomly, using the existing input for deterministic results. 2.2. If is is shorter, it will try to "compress" the input to fit into the 64 chars array and, if there will empty space left, will execute 1.1. step.</li>
+<li>Using some sort of algorithm (most likely xor and bits shifting) and build the output string using the modified (steps 1.1 / 1.2 ) input.</li>
+<li>Return the hashed value. </li>
+</ol>
 
 </div>
 </div>

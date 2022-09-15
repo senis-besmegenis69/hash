@@ -92,11 +92,15 @@ $(document).ready(function(){initNavTree('d0/d29/main_8c.html','../../'); initRe
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="../../db/dfb/hash_8h_source.html">hash.h</a>&gt;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
@@ -104,18 +108,48 @@ Include dependency graph for main.c:</div>
 </div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ae04bd196dd99057a34ae296f2f80d33b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#ae04bd196dd99057a34ae296f2f80d33b">SAMPLE</a>(str)</td></tr>
+<tr class="separator:ae04bd196dd99057a34ae296f2f80d33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
-<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a217dbf8b442f20279ea00b898af96f52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a217dbf8b442f20279ea00b898af96f52">main</a> (int argc, const char **argv)</td></tr>
+<tr class="separator:a217dbf8b442f20279ea00b898af96f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section copyright"><dt>Copyright</dt><dd>This file is a part of the project hivelang and is distributed under MIT license that should have been included with the project. If not, see <a href="https://choosealicense.com/licenses/mit/">https://choosealicense.com/licenses/mit/</a></dd></dl>
 <dl class="section author"><dt>Author</dt><dd>jorisb</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2022-09-15 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a3c04138a5bfe5d72780bb7e82a18e627" name="a3c04138a5bfe5d72780bb7e82a18e627"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ae04bd196dd99057a34ae296f2f80d33b" name="ae04bd196dd99057a34ae296f2f80d33b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae04bd196dd99057a34ae296f2f80d33b">&#9670;&nbsp;</a></span>SAMPLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SAMPLE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    { \</div>
+<div class="line">        char* hashed = <a class="code hl_function" href="../../d7/d3b/group__hash.html#ga6ea254c8281f96f20553763070dfcd06">hash</a>(str, <span class="keyword">sizeof</span>(str) - 1); \</div>
+<div class="line">        fprintf(stdout, <span class="stringliteral">&quot;value: %s, hash: %s\n&quot;</span>, str, hashed); \</div>
+<div class="line">        free(hashed); \</div>
+<div class="line">    }</div>
+<div class="ttc" id="agroup__hash_html_ga6ea254c8281f96f20553763070dfcd06"><div class="ttname"><a href="../../d7/d3b/group__hash.html#ga6ea254c8281f96f20553763070dfcd06">hash</a></div><div class="ttdeci">char * hash(const char *input, const signed long long length)</div><div class="ttdoc">Process input string and return hashed value.</div><div class="ttdef"><b>Definition:</b> hash.c:22</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a217dbf8b442f20279ea00b898af96f52" name="a217dbf8b442f20279ea00b898af96f52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217dbf8b442f20279ea00b898af96f52">&#9670;&nbsp;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +163,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **&#160;</td>
+          <td class="paramtype">const char **&#160;</td>
           <td class="paramname"><em>argv</em>&#160;</td>
         </tr>
         <tr>
