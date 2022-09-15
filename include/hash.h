@@ -21,9 +21,21 @@
 
 /**
  * Process input string and return hashed value.
+ * 
+ * How it works:
+ *     1. Allocate output array, check for errors for input value and allocated array.
+ *     2. Checks if the input is shorter or longer than 64 chars array.
+ *         2.1. If it is shorter, it will append chars, that were generated randomly, using the
+ *              existing input for deterministic results.
+ *         2.2. If is is shorter, it will try to "compress" the input to fit into the 64 chars
+ *              array and, if there will empty space left, will execute 1.1. step.
+ *     3. Using some sort of algorithm (most likely xor and bits shifting) and build the output
+ *        string using the modified (steps 1.1 / 1.2 ) input.
+ *     4. Return the hashed value.
  */
 char* hash(
-	const char* input);
+	const char* input,
+	const signed long long length);
 
 /**
  * @}

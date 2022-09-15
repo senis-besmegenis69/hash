@@ -14,7 +14,7 @@ TESTS_DIR := ./tests
 
 # Sources (searches recursively inside the source directory)
 SRC_DIR = ./source
-SRCS = $(SRC_DIR)/main.c
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/hash.c
 
 # Includes
 INCLUDE_DIR = ./include
@@ -171,7 +171,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 .PHONY: run
 run: all
 	@echo "Starting program: $(BIN_DIR)/$(EXEC)"
-	@cd ./$(BIN_DIR); ./$(EXEC)
+	@cd ./$(BIN_DIR); ./$(EXEC) $(args)
 
 # Clean build and bin directories for all platforms
 .PHONY: clean
