@@ -1,3 +1,9 @@
+
+####################################################################################################
+# C .gitignore                                                                                     #
+#     Source: https://github.com/github/gitignore/blob/main/C.gitignore                            #
+####################################################################################################
+
 # Prerequisites
 *.d
 
@@ -50,3 +56,35 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+
+####################################################################################################
+# Visual Studio Code .gitignore                                                                    #
+#     Source: https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore      #
+####################################################################################################
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+
+
+####################################################################################################
+# Custom                                                                                           #
+#                                                                                                  #
+####################################################################################################
+
+build
+bin
+.vscode
+!.vscode/doxy.code-snippets
