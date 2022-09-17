@@ -1,30 +1,36 @@
 var indexSectionsWithContent =
 {
-  0: "hmrs",
-  1: "hmr",
-  2: "hm",
-  3: "hs",
-  4: "h",
-  5: "h"
+  0: "bhimrsv",
+  1: "h",
+  2: "hmr",
+  3: "hm",
+  4: "bsv",
+  5: "i",
+  6: "h",
+  7: "h"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "functions",
-  3: "defines",
-  4: "groups",
-  5: "pages"
+  1: "classes",
+  2: "files",
+  3: "functions",
+  4: "variables",
+  5: "defines",
+  6: "groups",
+  7: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Files",
-  2: "Functions",
-  3: "Macros",
-  4: "Modules",
-  5: "Pages"
+  1: "Classes",
+  2: "Files",
+  3: "Functions",
+  4: "Variables",
+  5: "Macros",
+  6: "Modules",
+  7: "Pages"
 };
 

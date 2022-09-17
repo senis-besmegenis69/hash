@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sample_0',['SAMPLE',['../d0/d29/main_8c.html#ae04bd196dd99057a34ae296f2f80d33b',1,'main.c']]]
+  ['main_0',['main',['../d0/d29/main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.c']]],
+  ['main_2ec_1',['main.c',['../d0/d29/main_8c.html',1,'']]]
 ];

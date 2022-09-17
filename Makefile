@@ -4,7 +4,7 @@
 ################################################################################
 
 # Executable name
-EXEC = hash
+EXEC = hash256
 
 # Build, bin, assets, and install directories (bin and build root directories are kept for clean)
 BUILD_DIR_ROOT = ./build
@@ -14,7 +14,7 @@ TESTS_DIR := ./tests
 
 # Sources (searches recursively inside the source directory)
 SRC_DIR = ./source
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/hash.c
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/hash256.c
 
 # Includes
 INCLUDE_DIR = ./include

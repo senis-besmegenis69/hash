@@ -1,4 +1,4 @@
 var modules =
 [
-    [ "Hash", "d7/d3b/group__hash.html", "d7/d3b/group__hash" ]
+    [ "Hash256", "da/df6/group__hash256.html", "da/df6/group__hash256" ]
 ];
