@@ -32,6 +32,7 @@ struct Word
 int main(
 	void)
 {
+	// fprintf(stdout, "%s\n", hash256("n!ebeprisikiskiapusteliadama", 28).stringified);
 	fprintf(stdout, "%s\n", hash256("Lietuva", 7).stringified);
 	fprintf(stdout, "%s\n", hash256("lietuva", 7).stringified);
 	return 0;
