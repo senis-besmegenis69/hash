@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['valid_0',['valid',['../dc/d81/structHash256.html#a99433190b257193575b150f88a89b5a5',1,'Hash256']]]
+  ['stringified_0',['stringified',['../dc/d81/structHash256.html#a417381b1371d9e9fc9c4064ad06620b7',1,'Hash256']]]
 ];
