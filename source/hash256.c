@@ -20,6 +20,27 @@
 
 #define INVALID_HASH256 ((struct Hash256) {.blocks = {0}, .stringified = {0}, .valid = 0})
 
+#define PRIMARY1 ((const unsigned int)31)
+#define PRIMARY2 ((const signed long long)2747636419u)
+#define PRIMARY3 ((const signed long long)2654435769u)
+
+static inline void setBlock(
+	const signed int index,
+	const signed int state,
+	const unsigned int previous,
+	struct Hash256* const hash)
+{
+	assert(hash != NULL);
+	hash->blocks[index] = (state >> index) ^ previous;
+	hash->blocks[index] ^= previous;
+	hash->blocks[index] ^= PRIMARY2;
+	hash->blocks[index] *= PRIMARY3;
+	hash->blocks[index] ^= hash->blocks[index] >> 16;
+	hash->blocks[index] *= PRIMARY3;
+	hash->blocks[index] ^= hash->blocks[index] >> 16;
+	hash->blocks[index] *= PRIMARY3;
+}
+
 struct Hash256 hash256(
 	const char* input,
 	const signed long long length)
@@ -35,63 +56,18 @@ struct Hash256 hash256(
 		return INVALID_HASH256;
 	}
 
-	// Hashing
+	// Setting up hash blocks
 	struct Hash256 hash = INVALID_HASH256;
-	const unsigned int primary1 = 31;
-	const signed long long primary2 = 2747636419u;
-	const signed long long primary3 = 2654435769u;
 
 	unsigned int state = 0;
 	for (signed int i = 0; i < length; ++i)
-		state = primary1 * state + *(unsigned int*)(input + i);
+		state = PRIMARY1 * state + *(unsigned int*)(input + i);
 
-	/*
-	hash.blocks[0] = state;
-	hash.blocks[1] = (hash.blocks[0] ^ (hash.blocks[0] >> 1));
-	hash.blocks[2] = ~state;
-	hash.blocks[3] = (hash.blocks[2] ^ (hash.blocks[2] >> 3));
-
-	hash.blocks[4] = state;
-	hash.blocks[5] = (hash.blocks[4] ^ (hash.blocks[4] >> 5));
-	hash.blocks[6] = ~state;
-	hash.blocks[7] = (hash.blocks[6] ^ (hash.blocks[6] >> 7));
-	*/
-
-	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
-	{
-		// hash.blocks[i] = state;
-		/*
-		hash.blocks[i] = (state >> (i * i + 1)) ^ state;
-		hash.blocks[i] ^= ~hash.blocks[i - 1];
-		hash.blocks[i] ^= primary2;
-		hash.blocks[i] *= primary3;
-		hash.blocks[i] ^= hash.blocks[i] >> 16;
-		hash.blocks[i] *= primary3;
-		hash.blocks[i] ^= hash.blocks[i] >> 16;
-		hash.blocks[i] *= primary3;
-		*/
-	}
-
-	hash.blocks[0] = state;
-	hash.blocks[0] ^= primary2;
-	hash.blocks[0] *= primary3;
-	hash.blocks[0] ^= hash.blocks[0] >> 16;
-	hash.blocks[0] *= primary3;
-	hash.blocks[0] ^= hash.blocks[0] >> 16;
-	hash.blocks[0] *= primary3;
-
+	setBlock(0, state, 0, &hash);
 	for (signed int i = 1; i < HASH256_BLOCKS_COUNT; ++i)
-	{
-		hash.blocks[i] = (state >> i) ^ hash.blocks[i - 1];
-		hash.blocks[i] ^= hash.blocks[i - 1];
-		hash.blocks[i] ^= primary2;
-		hash.blocks[i] *= primary3;
-		hash.blocks[i] ^= hash.blocks[i] >> 16;
-		hash.blocks[i] *= primary3;
-		hash.blocks[i] ^= hash.blocks[i] >> 16;
-		hash.blocks[i] *= primary3;
-	}
+		setBlock(i, state, hash.blocks[i - 1], &hash);
 
+	// Setting up stringified hash
 	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
 	{
 		if (snprintf(hash.stringified + (i * HASH256_BLOCKS_COUNT), HASH256_BLOCKS_COUNT + 1, "%08x", hash.blocks[i]) <= 0)
