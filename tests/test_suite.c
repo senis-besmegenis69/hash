@@ -25,18 +25,34 @@ signed int equalHashes(struct Hash256* const a, struct Hash256* const b)
 
 struct Word
 {
-	char buffer[128];
+	char buffer[128 + 1];
 	signed long long length;
 };
+
+#define SAMPLE(str) \
+	{ \
+		struct Hash256 hash = hash256(str, strlen(str)); \
+		signed long long len = strlen(hash.stringified); \
+		fprintf(stdout, "%.*s %lld\n", (int)len, hash.stringified, len); \
+	}
 
 int main(
 	void)
 {
-	// fprintf(stdout, "%s\n", hash256("n!ebeprisikiskiapusteliadama", 28).stringified);
-	fprintf(stdout, "%s\n", hash256("Lietuva", 7).stringified);
-	fprintf(stdout, "%s\n", hash256("lietuva", 7).stringified);
-	return 0;
+#if 0
+	SAMPLE("n!ebeprisikiskiapusteliadama\n");
+	SAMPLE("Lietuva");
+	SAMPLE("lietuva");
+	SAMPLE("data\n");
 
+	fprintf(stdout, "\n");
+
+	SAMPLE("n!ebeprisikiskiapusteliadama\n");
+	SAMPLE("Lietuva");
+	SAMPLE("lietuva");
+	SAMPLE("data\n");
+	return 0;
+#else
 	FILE* stream = fopen("./30k.txt", "r");
 	assert(stream != NULL);
 	ssize_t read; char* line; size_t length = 0;
@@ -63,9 +79,15 @@ int main(
 	fprintf(stdout, "Finished reading words (%lld)!\n", wordsCount);
 
 	signed long long collided = 0;
-	for (signed long long i = 0; i < wordsCount - 1; ++i)
+	for (signed long long i = 0; i < wordsCount; ++i)
 	{
 		struct Hash256 hashi = hash256(words[i].buffer, words[i].length);
+
+		signed long long len = strlen(hashi.stringified);
+		if (len != HASH256_STRING_LENGTH)
+		{
+			fprintf(stdout, "Value: %s, hash: %s is not the right length: %lld!\n", words[i].buffer, hashi.stringified, len);
+		}
 
 		for (signed long long j = i; j < wordsCount; ++j)
 		{
@@ -96,4 +118,5 @@ int main(
 
 	free(words);
 	return 0;
+#endif
 }

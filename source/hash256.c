@@ -45,6 +45,33 @@ struct Hash256 hash256(
 	for (signed int i = 0; i < length; ++i)
 		state = primary1 * state + *(unsigned int*)(input + i);
 
+	/*
+	hash.blocks[0] = state;
+	hash.blocks[1] = (hash.blocks[0] ^ (hash.blocks[0] >> 1));
+	hash.blocks[2] = ~state;
+	hash.blocks[3] = (hash.blocks[2] ^ (hash.blocks[2] >> 3));
+
+	hash.blocks[4] = state;
+	hash.blocks[5] = (hash.blocks[4] ^ (hash.blocks[4] >> 5));
+	hash.blocks[6] = ~state;
+	hash.blocks[7] = (hash.blocks[6] ^ (hash.blocks[6] >> 7));
+	*/
+
+	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
+	{
+		// hash.blocks[i] = state;
+		/*
+		hash.blocks[i] = (state >> (i * i + 1)) ^ state;
+		hash.blocks[i] ^= ~hash.blocks[i - 1];
+		hash.blocks[i] ^= primary2;
+		hash.blocks[i] *= primary3;
+		hash.blocks[i] ^= hash.blocks[i] >> 16;
+		hash.blocks[i] *= primary3;
+		hash.blocks[i] ^= hash.blocks[i] >> 16;
+		hash.blocks[i] *= primary3;
+		*/
+	}
+
 	hash.blocks[0] = state;
 	hash.blocks[0] ^= primary2;
 	hash.blocks[0] *= primary3;
@@ -67,7 +94,7 @@ struct Hash256 hash256(
 
 	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
 	{
-		if (snprintf(hash.stringified + (i * HASH256_BLOCKS_COUNT), HASH256_BLOCKS_COUNT + 1, "%x", hash.blocks[i]) <= 0)
+		if (snprintf(hash.stringified + (i * HASH256_BLOCKS_COUNT), HASH256_BLOCKS_COUNT + 1, "%08x", hash.blocks[i]) <= 0)
 		{
 			return INVALID_HASH256;
 		}
