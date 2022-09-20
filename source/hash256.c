@@ -32,18 +32,53 @@ static inline void setBlock(
 {
 	assert(hash != NULL);
 	hash->blocks[index] = (state >> index) ^ previous;
-	hash->blocks[index] ^= previous;
+	hash->blocks[index] ^= previous + index;
 	hash->blocks[index] ^= PRIMARY2;
-	hash->blocks[index] *= PRIMARY3;
+	hash->blocks[index] *= PRIMARY3 + index;
 	hash->blocks[index] ^= hash->blocks[index] >> 16;
 	hash->blocks[index] *= PRIMARY3;
+	// hash->blocks[index] *= hash->blocks[index] << (index + 1);
+	// hash->blocks[index] *= PRIMARY1 - index;
 	hash->blocks[index] ^= hash->blocks[index] >> 16;
 	hash->blocks[index] *= PRIMARY3;
 }
 
+static inline char* saltInput(
+	const char* input,
+	signed long long* length)
+{
+	if (input == NULL)
+	{
+		return NULL;
+	}
+
+	if (*length <= 0)
+	{
+		return NULL;
+	}
+
+	signed long long saltedLength = *length + 8 + 16 + 16;
+
+	char* salted = malloc((saltedLength + 1) * sizeof(char));
+	assert(salted != NULL);
+
+	char salt[8];
+	for (signed int i = 0; i < sizeof(salt); ++i)
+		salt[i] = input[i] + i;
+
+	memcpy(salted, salt, sizeof(salt));
+	memcpy(salted + sizeof(salt), input, *length);
+	memcpy(salted + sizeof(salt) + *length, (const char*)&length, sizeof(signed long long));
+	memcpy(salted + sizeof(salt) + *length + sizeof(signed long long), salt, sizeof(salt));
+
+	salted[saltedLength] = 0;
+	*length = saltedLength;
+	return salted;
+}
+
 struct Hash256 hash256(
 	const char* input,
-	const signed long long length)
+	signed long long length)
 {
 	// Input validation and error handling
 	if (input == NULL)
@@ -56,19 +91,24 @@ struct Hash256 hash256(
 		return INVALID_HASH256;
 	}
 
+	// Salt input
+	char* salted = NULL;
+	if ((salted = saltInput(input, &length)) == NULL)
+		return INVALID_HASH256;
+
 	// Setting up hash blocks
-	struct Hash256 hash = INVALID_HASH256;
+	struct Hash256 hash = {0};
 	unsigned int state = 0;
 
 	for (signed int i = 0; i < length; ++i)
 	{
-		const unsigned int value = *(unsigned int*)(input + i);
-		state = PRIMARY1 * state + value;
+		const unsigned int value = *(unsigned int*)(salted + i);
+		state = PRIMARY1 * state - PRIMARY2 * state + (state ^ PRIMARY3) + value;
 	}
 
 	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
 	{
-		setBlock(i, state, i == 0 ? 0 : hash.blocks[i - 1], &hash);
+		setBlock(i, state, i == 0 ? state : hash.blocks[i - 1], &hash);
 	}
 
 	// Setting up stringified hash
@@ -82,5 +122,6 @@ struct Hash256 hash256(
 
 	hash.stringified[HASH256_STRING_LENGTH] = 0;
 	hash.valid = 1;
+	free(salted);
 	return hash;
 }

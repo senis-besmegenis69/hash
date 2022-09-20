@@ -45,7 +45,7 @@ struct Hash256
  */
 struct Hash256 hash256(
 	const char* input,
-	const signed long long length);
+	signed long long length);
 
 /**
  * @}

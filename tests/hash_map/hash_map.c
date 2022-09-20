@@ -90,7 +90,8 @@ static inline signed int HashMap_add(
 
 	if (existing != NULL)
 	{
-		fprintf(stdout, "Collision happened! Values: %s, hash: %s\n", existing->word.buffer, existing->hash.stringified);
+		fprintf(stdout, "Collision happened between\n\tvalue: %s, hash: %s\n\tvalue: %s, hash: %s\n",
+			node.word.buffer, node.hash.stringified, existing->word.buffer, existing->hash.stringified);
 		return 0;
 	}
 	else
@@ -121,12 +122,15 @@ int main(
 
 	while ((read = getline(&line, &length, stream)) != -1)
 	{
-		struct Hash256 hash = hash256(line, length);
-		struct Word word = { .buffer = {0} }; memcpy(word.buffer, line, length - 1);
+		--read;
+		struct Hash256 hash = hash256(line, read);
+		struct Word word = { .buffer = {0} };
+		memcpy(word.buffer, line, read);
+		word.buffer[read] = 0;
 
 		if (!HashMap_add(&hashMap, (struct Node) { .hash = hash, .word = word }))
 		{
-			fprintf(stdout, "Collision happened! Value: %s, hash: %s\n", word.buffer, hash.stringified);
+			// fprintf(stdout, "Collision happened! Value: %s, hash: %s\n", word.buffer, hash.stringified);
 		}
 	}
 
