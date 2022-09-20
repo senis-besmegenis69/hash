@@ -86,4 +86,3 @@ dkms.conf
 
 build
 bin
-!.vscode/doxy.code-snippets
