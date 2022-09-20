@@ -58,14 +58,18 @@ struct Hash256 hash256(
 
 	// Setting up hash blocks
 	struct Hash256 hash = INVALID_HASH256;
-
 	unsigned int state = 0;
-	for (signed int i = 0; i < length; ++i)
-		state = PRIMARY1 * state + *(unsigned int*)(input + i);
 
-	setBlock(0, state, 0, &hash);
-	for (signed int i = 1; i < HASH256_BLOCKS_COUNT; ++i)
-		setBlock(i, state, hash.blocks[i - 1], &hash);
+	for (signed int i = 0; i < length; ++i)
+	{
+		const unsigned int value = *(unsigned int*)(input + i);
+		state = PRIMARY1 * state + value;
+	}
+
+	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
+	{
+		setBlock(i, state, i == 0 ? 0 : hash.blocks[i - 1], &hash);
+	}
 
 	// Setting up stringified hash
 	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
