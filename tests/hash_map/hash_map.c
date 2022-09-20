@@ -114,7 +114,7 @@ static inline void HashMap_destroy(
 int main(
 	void)
 {
-	FILE* stream = fopen("./30k.txt", "r");
+	FILE* stream = fopen("./500k.txt", "r");
 	assert(stream != NULL);
 	ssize_t read; char* line; size_t length = 0;
 

@@ -178,7 +178,9 @@ int main(
 		fclose(stream);
 
 		content[fsize] = 0;
-		return hashAndPrint(content, fsize, arg0);
+		signed int result = hashAndPrint(content, fsize, arg0);
+		free(content);
+		return result;
 	}
 
 	return 0;

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hash_0',['hash',['../index.html',1,'']]]
+  ['hash256_0',['hash256',['../index.html',1,'']]]
 ];

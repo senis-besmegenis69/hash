@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=11" />
 	<meta name="generator" content="Doxygen 1.9.4" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>hash: hash</title>
+	<title>hash: hash256</title>
 	<link href="tabs.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="dynsections.js"></script>
@@ -19,7 +19,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 	<link href="doxygen.css" rel="stylesheet" type="text/css" />
-	<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 	<script type="text/javascript">
 		DoxygenAwesomeDarkModeToggle.init()
@@ -91,10 +90,43 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">hash </div></div>
+  <div class="headertitle"><div class="title">hash256 </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a> TODO: add description, analysis, and more </p>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> TODO: add description, analysis, and more</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Usage:</h1>
+<div class="fragment"><div class="line">Usage: ./hash256 [Commands] &lt;args&gt;</div>
+<div class="line"> </div>
+<div class="line">Commands:</div>
+<div class="line">    [ --text | -t ] &lt;string&gt;       Provide a string to be hashed</div>
+<div class="line">    [ --file | -f ] &lt;path&gt;         Provide file to be hashed</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+To build:&lt;br&gt;</h1>
+<div class="fragment"><div class="line">&gt; cd ./root-of-the-project</div>
+<div class="line">&gt; make</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+To run:&lt;br&gt;</h1>
+<div class="fragment"><div class="line">&gt; cd ./root-of-the-project</div>
+<div class="line">&gt; make run args-&quot;any args you want&quot;</div>
+</div><!-- fragment --><p> or<br  />
+ </p><div class="fragment"><div class="line">&gt; cd ./root-of-the-project/bin/&lt;os&gt;/&lt;configuration&gt;</div>
+<div class="line">&gt; ./hash256 &lt;args&gt;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+Personal analysis:</h1>
+<p >I have run the hash function with 30k inputs from a single file with hopes to not get any collisions and it worked. The test file is in the repo/tests/&lt;somewhere&gt;.<br  />
+ Next test was with 500k pharses and words in the secodn tests file. After a lot of fixes and experimentation, it also does not have any collisions.<br  />
+ So that's good..<br  />
+ I would like to add, that the hashinh algorithm also was deterministic, quite fast for my code quality and it WORKED!</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Required analysis and comparisons:</h1>
+<p >Tests from requirements file...<br  />
+</p>
+<p >Notes:<br  />
+</p><ol type="1">
+<li>Bare in mind that HashMap in the repo is the worst possible implementation of that specific data structure. I just needed faster wayt to test huge amounts of inputs, and bubble-type solution was just the worst in terms of performance, thus my shitty HashMap is there...</li>
+<li>I have deleted bubble test suite, because it had very poor performance and was not needed for further investigation of the algorithm's effectiveness. I strongly propose not to look for it, but if you want some meme content, try to look it up in the commits. It is somewhere there... </li>
+</ol>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

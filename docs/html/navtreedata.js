@@ -25,6 +25,13 @@
 var NAVTREE =
 [
   [ "hash", "index.html", [
+    [ "hash256", "index.html", [
+      [ "Usage:", "index.html#autotoc_md1", null ],
+      [ "To build:<br>", "index.html#autotoc_md2", null ],
+      [ "To run:<br>", "index.html#autotoc_md3", null ],
+      [ "Personal analysis:", "index.html#autotoc_md4", null ],
+      [ "Required analysis and comparisons:", "index.html#autotoc_md5", null ]
+    ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

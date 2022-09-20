@@ -49,7 +49,7 @@
 // last to I 'borrowed' from a forum. And they seem to be working with my algorithm just fine.
 
 /**
- * [PRIVATE] Setup a block of the hash object using the state, made from the salted input, and bits
+ * [PRIVATE] Setup a block of the hash object using the state, made from the input, and bits
  * manipulation.
  */
 static inline void setBlock(
@@ -69,53 +69,6 @@ static inline void setBlock(
 	hash->blocks[index] *= PRIMARY3;
 }
 
-/**
- * [PRIVATE] Apply salts to the input and append input's length to the input. Return the reworked
- * string for hashing.
- */
-static inline char* saltInput(
-	const char* input,
-	signed long long* length)
-{
-	if (input == NULL)
-	{
-		return NULL;
-	}
-
-	if (*length <= 0)
-	{
-		return NULL;
-	}
-
-	signed long long saltedLength = *length + 8 + 16 + 16;
-	char* salted = malloc((saltedLength + 1) * sizeof(char));
-	assert(salted != NULL);
-
-	const char* iterator = input;
-	char salt[8] = {0};
-
-	for (signed int i = 0; i < (signed int)sizeof(salt); ++i)
-	{
-		if (iterator != NULL)
-		{
-			salt[i] = *iterator++;
-		}
-		else
-		{
-			iterator = input;
-		}
-	}
-
-	memcpy(salted, salt, sizeof(salt));
-	memcpy(salted + sizeof(salt), input, *length);
-	memcpy(salted + sizeof(salt) + *length, (const char*)&*length, sizeof(signed long long));
-	memcpy(salted + sizeof(salt) + *length + sizeof(signed long long), salt, sizeof(salt));
-
-	salted[saltedLength] = 0;
-	*length = saltedLength;
-	return salted;
-}
-
 struct Hash256 hash256(
 	const char* input,
 	signed long long length)
@@ -126,23 +79,23 @@ struct Hash256 hash256(
 		return INVALID_HASH256;
 	}
 
-	if (length <= 0)
+	if (length < 0)
 	{
 		return INVALID_HASH256;
 	}
-
-	// Salt input
-	char* salted = NULL;
-	if ((salted = saltInput(input, &length)) == NULL)
-	 	return INVALID_HASH256;
 
 	// Setting up hash blocks
 	struct Hash256 hash = INVALID_HASH256;
 	unsigned int state = 0;
 
+	for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
+		setBlock(i, state, i == 0 ? state : hash.blocks[i - 1], &hash);
+
+	state = 0;
+
 	for (signed int i = 0; i < length; ++i)
 	{
-		const unsigned int value = *(unsigned int*)(salted + i);
+		const unsigned int value = *(unsigned int*)(input + i);
 		state = PRIMARY1 * state - PRIMARY2 * state + (state ^ PRIMARY3) + value;
 
 		for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
@@ -160,7 +113,6 @@ struct Hash256 hash256(
 
 	hash.stringified[HASH256_STRING_LENGTH] = 0;
 	hash.valid = 1;
-	free(salted);
 	return hash;
 }
 
