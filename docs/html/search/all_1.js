@@ -2,7 +2,7 @@ var searchData=
 [
   ['hash_0',['hash',['../index.html',1,'']]],
   ['hash256_1',['Hash256',['../dc/d81/structHash256.html',1,'']]],
-  ['hash256_2',['hash256',['../da/df6/group__hash256.html#gaf7a37d4bb90a0d941e146c6964449a9d',1,'hash256(const char *input, const signed long long length):&#160;hash256.c'],['../da/df6/group__hash256.html#gaf7a37d4bb90a0d941e146c6964449a9d',1,'hash256(const char *input, const signed long long length):&#160;hash256.c']]],
+  ['hash256_2',['hash256',['../da/df6/group__hash256.html#ga315136b2c1dc74b048ff23410fb0266d',1,'hash256.c']]],
   ['hash256_3',['Hash256',['../da/df6/group__hash256.html',1,'']]],
   ['hash256_2ec_4',['hash256.c',['../d6/d4e/hash256_8c.html',1,'']]],
   ['hash256_2eh_5',['hash256.h',['../d3/de2/hash256_8h.html',1,'']]],

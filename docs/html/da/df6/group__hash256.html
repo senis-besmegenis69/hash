@@ -113,12 +113,24 @@ Macros</h2></td></tr>
 <tr class="memitem:ga33b77cc198806913988f2fc08844ab7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df6/group__hash256.html#ga33b77cc198806913988f2fc08844ab7c">HASH256_BLOCKS_COUNT</a>&#160;&#160;&#160;((signed int)(<a class="el" href="../../da/df6/group__hash256.html#ga6793d6f85fa7f641b808082f21da341f">HASH256_STRING_LENGTH</a> / 8))</td></tr>
 <tr class="memdesc:ga33b77cc198806913988f2fc08844ab7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">256-bit hash's blocks count.  <a href="../../da/df6/group__hash256.html#ga33b77cc198806913988f2fc08844ab7c">More...</a><br /></td></tr>
 <tr class="separator:ga33b77cc198806913988f2fc08844ab7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga214186558c4ce0da66f7c3a4c84bd4c9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df6/group__hash256.html#ga214186558c4ce0da66f7c3a4c84bd4c9">INVALID_HASH256</a>&#160;&#160;&#160;((struct <a class="el" href="../../dc/d81/structHash256.html">Hash256</a>) {.blocks = {0}, .stringified = {0}, .valid = 0})</td></tr>
+<tr class="memdesc:ga214186558c4ce0da66f7c3a4c84bd4c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for creating 'invalid' hashes (not processed ones).  <a href="../../da/df6/group__hash256.html#ga214186558c4ce0da66f7c3a4c84bd4c9">More...</a><br /></td></tr>
+<tr class="separator:ga214186558c4ce0da66f7c3a4c84bd4c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga90c256c3c40138d82af8dffe48452ffa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df6/group__hash256.html#ga90c256c3c40138d82af8dffe48452ffa">PRIMARY1</a>&#160;&#160;&#160;((const unsigned int)31)</td></tr>
+<tr class="memdesc:ga90c256c3c40138d82af8dffe48452ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primary value used for hashing no.1.  <a href="../../da/df6/group__hash256.html#ga90c256c3c40138d82af8dffe48452ffa">More...</a><br /></td></tr>
+<tr class="separator:ga90c256c3c40138d82af8dffe48452ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3b4380b5d640e32b228d92581e4d555a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df6/group__hash256.html#ga3b4380b5d640e32b228d92581e4d555a">PRIMARY2</a>&#160;&#160;&#160;((const signed long long)2747636419)</td></tr>
+<tr class="memdesc:ga3b4380b5d640e32b228d92581e4d555a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primary value used for hashing no.2.  <a href="../../da/df6/group__hash256.html#ga3b4380b5d640e32b228d92581e4d555a">More...</a><br /></td></tr>
+<tr class="separator:ga3b4380b5d640e32b228d92581e4d555a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61a49b92485abae23fb1b79d279ddec3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df6/group__hash256.html#ga61a49b92485abae23fb1b79d279ddec3">PRIMARY3</a>&#160;&#160;&#160;((const signed long long)2654435769)</td></tr>
+<tr class="memdesc:ga61a49b92485abae23fb1b79d279ddec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primary value used for hashin no.3.  <a href="../../da/df6/group__hash256.html#ga61a49b92485abae23fb1b79d279ddec3">More...</a><br /></td></tr>
+<tr class="separator:ga61a49b92485abae23fb1b79d279ddec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaf7a37d4bb90a0d941e146c6964449a9d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../dc/d81/structHash256.html">Hash256</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df6/group__hash256.html#gaf7a37d4bb90a0d941e146c6964449a9d">hash256</a> (const char *input, const signed long long length)</td></tr>
-<tr class="memdesc:gaf7a37d4bb90a0d941e146c6964449a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash provided string value into 256-bit hash.  <a href="../../da/df6/group__hash256.html#gaf7a37d4bb90a0d941e146c6964449a9d">More...</a><br /></td></tr>
-<tr class="separator:gaf7a37d4bb90a0d941e146c6964449a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga315136b2c1dc74b048ff23410fb0266d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../dc/d81/structHash256.html">Hash256</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df6/group__hash256.html#ga315136b2c1dc74b048ff23410fb0266d">hash256</a> (const char *input, signed long long length)</td></tr>
+<tr class="memdesc:ga315136b2c1dc74b048ff23410fb0266d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash provided string value into 256-bit hash.  <a href="../../da/df6/group__hash256.html#ga315136b2c1dc74b048ff23410fb0266d">More...</a><br /></td></tr>
+<tr class="separator:ga315136b2c1dc74b048ff23410fb0266d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -154,9 +166,73 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga214186558c4ce0da66f7c3a4c84bd4c9" name="ga214186558c4ce0da66f7c3a4c84bd4c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga214186558c4ce0da66f7c3a4c84bd4c9">&#9670;&nbsp;</a></span>INVALID_HASH256</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INVALID_HASH256&#160;&#160;&#160;((struct <a class="el" href="../../dc/d81/structHash256.html">Hash256</a>) {.blocks = {0}, .stringified = {0}, .valid = 0})</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro for creating 'invalid' hashes (not processed ones). </p>
+
+</div>
+</div>
+<a id="ga90c256c3c40138d82af8dffe48452ffa" name="ga90c256c3c40138d82af8dffe48452ffa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga90c256c3c40138d82af8dffe48452ffa">&#9670;&nbsp;</a></span>PRIMARY1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRIMARY1&#160;&#160;&#160;((const unsigned int)31)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Primary value used for hashing no.1. </p>
+
+</div>
+</div>
+<a id="ga3b4380b5d640e32b228d92581e4d555a" name="ga3b4380b5d640e32b228d92581e4d555a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3b4380b5d640e32b228d92581e4d555a">&#9670;&nbsp;</a></span>PRIMARY2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRIMARY2&#160;&#160;&#160;((const signed long long)2747636419)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Primary value used for hashing no.2. </p>
+
+</div>
+</div>
+<a id="ga61a49b92485abae23fb1b79d279ddec3" name="ga61a49b92485abae23fb1b79d279ddec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga61a49b92485abae23fb1b79d279ddec3">&#9670;&nbsp;</a></span>PRIMARY3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRIMARY3&#160;&#160;&#160;((const signed long long)2654435769)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Primary value used for hashin no.3. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaf7a37d4bb90a0d941e146c6964449a9d" name="gaf7a37d4bb90a0d941e146c6964449a9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf7a37d4bb90a0d941e146c6964449a9d">&#9670;&nbsp;</a></span>hash256()</h2>
+<a id="ga315136b2c1dc74b048ff23410fb0266d" name="ga315136b2c1dc74b048ff23410fb0266d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga315136b2c1dc74b048ff23410fb0266d">&#9670;&nbsp;</a></span>hash256()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +246,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const signed long long&#160;</td>
+          <td class="paramtype">signed long long&#160;</td>
           <td class="paramname"><em>length</em>&#160;</td>
         </tr>
         <tr>
