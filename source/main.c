@@ -178,7 +178,6 @@ int main(
 		fclose(stream);
 
 		content[fsize] = 0;
-
 		return hashAndPrint(content, fsize, arg0);
 	}
 

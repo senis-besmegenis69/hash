@@ -114,13 +114,13 @@ static inline void HashMap_destroy(
 int main(
 	void)
 {
-	FILE* stream = fopen("./500k.txt", "r");
+	FILE* stream = fopen("./30k.txt", "r");
 	assert(stream != NULL);
 	ssize_t read; char* line; size_t length = 0;
 
 	struct HashMap hashMap = HashMap_create(500000);
 
-	while ((read = getline(&line, &length, stream)) != -1)
+	for (signed long long i = 0; (read = getline(&line, &length, stream)) != -1; ++i)
 	{
 		--read;
 		struct Hash256 hash = hash256(line, read);
@@ -131,6 +131,11 @@ int main(
 		if (!HashMap_add(&hashMap, (struct Node) { .hash = hash, .word = word }))
 		{
 			// fprintf(stdout, "Collision happened! Value: %s, hash: %s\n", word.buffer, hash.stringified);
+		}
+
+		if (i % 25000 == 0)
+		{
+			fprintf(stdout, "Already processed %lld lines...\n", i);
 		}
 	}
 

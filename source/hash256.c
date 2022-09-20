@@ -91,13 +91,24 @@ static inline char* saltInput(
 	char* salted = malloc((saltedLength + 1) * sizeof(char));
 	assert(salted != NULL);
 
-	char salt[8];
+	const char* iterator = input;
+	char salt[8] = {0};
+
 	for (signed int i = 0; i < (signed int)sizeof(salt); ++i)
-		salt[i] = input[i] + i;
+	{
+		if (iterator != NULL)
+		{
+			salt[i] = *iterator++;
+		}
+		else
+		{
+			iterator = input;
+		}
+	}
 
 	memcpy(salted, salt, sizeof(salt));
 	memcpy(salted + sizeof(salt), input, *length);
-	memcpy(salted + sizeof(salt) + *length, (const char*)&length, sizeof(signed long long));
+	memcpy(salted + sizeof(salt) + *length, (const char*)&*length, sizeof(signed long long));
 	memcpy(salted + sizeof(salt) + *length + sizeof(signed long long), salt, sizeof(salt));
 
 	salted[saltedLength] = 0;
@@ -123,7 +134,7 @@ struct Hash256 hash256(
 	// Salt input
 	char* salted = NULL;
 	if ((salted = saltInput(input, &length)) == NULL)
-		return INVALID_HASH256;
+	 	return INVALID_HASH256;
 
 	// Setting up hash blocks
 	struct Hash256 hash = INVALID_HASH256;
@@ -135,9 +146,7 @@ struct Hash256 hash256(
 		state = PRIMARY1 * state - PRIMARY2 * state + (state ^ PRIMARY3) + value;
 
 		for (signed int i = 0; i < HASH256_BLOCKS_COUNT; ++i)
-		{
 			setBlock(i, state, i == 0 ? state : hash.blocks[i - 1], &hash);
-		}
 	}
 
 	// Setting up stringified hash
