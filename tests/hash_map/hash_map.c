@@ -19,7 +19,7 @@
 
 struct Word
 {
-	char buffer[128];
+	char buffer[1024];
 };
 
 struct Node
@@ -114,7 +114,7 @@ static inline void HashMap_destroy(
 int main(
 	void)
 {
-	FILE* stream = fopen("./500k.txt", "r");
+	FILE* stream = fopen("./../200000_phrases.txt", "r");
 	assert(stream != NULL);
 	ssize_t read; char* line; size_t length = 0;
 

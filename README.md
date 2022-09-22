@@ -54,6 +54,12 @@ Tests from requirements file...
     - [x] [file1](./tests/1000_plus_one_diff_1.txt)'s hash: 6de5b4c6c84b91958f655e48e225335aa9e6ad3afbc8d6ef1c5ebc627b5d6016
     - [x] [file2](./tests/1000_plus_one_diff_2.txt)'s hash: d01b43f59ccf6d99cb140de413bdcf7f20486a3f27ddbfa707585f9943344fe3
 
+4. Generated file for 4 test case. Used python. It is in ./tests folder.
+
+5. Testing that test file from point 4 with my 'very good hashmap..'. To test it, open hash_map.c file, edit the file name to be read. And runt it. In case of a collision, it will inform the user in the terminal. RESULTS: no collisions!
+
+6. TODO!!!
+
 Conslusion: all of the files were hashed properly. Each file was produced with a hash unique to itself, each hash was 64 bytes long in hex format.
 
 
