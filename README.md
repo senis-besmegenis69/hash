@@ -53,6 +53,7 @@ Tests from requirements file...
 3. Testing files with one different symbol:
     - [x] [file1](./tests/1000_plus_one_diff_1.txt)'s hash: 6de5b4c6c84b91958f655e48e225335aa9e6ad3afbc8d6ef1c5ebc627b5d6016
     - [x] [file2](./tests/1000_plus_one_diff_2.txt)'s hash: d01b43f59ccf6d99cb140de413bdcf7f20486a3f27ddbfa707585f9943344fe3
+    - [x] See results [here](./test_3_results.pdf)
 
 4. Generated file for 4 test case. Used python. It is in ./tests folder.
 
