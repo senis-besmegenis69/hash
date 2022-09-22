@@ -19,6 +19,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 	<script type="text/javascript">
 		DoxygenAwesomeDarkModeToggle.init()
@@ -102,15 +103,15 @@ Usage:</h1>
 <div class="line">    [ --text | -t ] &lt;string&gt;       Provide a string to be hashed</div>
 <div class="line">    [ --file | -f ] &lt;path&gt;         Provide file to be hashed</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
-To build:&lt;br&gt;</h1>
+To build:</h1>
 <div class="fragment"><div class="line">&gt; cd ./root-of-the-project</div>
 <div class="line">&gt; make</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
-To run:&lt;br&gt;</h1>
+To run:</h1>
 <div class="fragment"><div class="line">&gt; cd ./root-of-the-project</div>
 <div class="line">&gt; make run args-&quot;any args you want&quot;</div>
-</div><!-- fragment --><p> or<br  />
- </p><div class="fragment"><div class="line">&gt; cd ./root-of-the-project/bin/&lt;os&gt;/&lt;configuration&gt;</div>
+</div><!-- fragment --><p> or</p>
+<div class="fragment"><div class="line">&gt; cd ./root-of-the-project/bin/&lt;os&gt;/&lt;configuration&gt;</div>
 <div class="line">&gt; ./hash256 &lt;args&gt;</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Personal analysis:</h1>
@@ -120,10 +121,25 @@ Personal analysis:</h1>
  I would like to add, that the hashinh algorithm also was deterministic, quite fast for my code quality and it WORKED!</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Required analysis and comparisons:</h1>
-<p >Tests from requirements file...<br  />
-</p>
-<p >Notes:<br  />
-</p><ol type="1">
+<p >Tests from requirements file...</p>
+<ol type="1">
+<li><p class="startli">Testing files with one different symbol:</p>
+<p class="startli">[x] <a href="./tests/one_symbol_file_1.txt">file1</a>'s hash: 0d59b57c0c6841da422a51e9560b2490ca72e8f33a2693854b690aa581419b34</p>
+<p class="startli">[x] <a href="./tests/one_symbol_file_2.txt">file2</a>'s hash: 515fe97991ab42d73f482ad5d75e63898019673d5e181ea13e526c8d69ab91c1</p>
+</li>
+<li><p class="startli">Testing files with one different symbol:</p>
+<p class="startli">[x] <a href="./tests/1000_plus_random_1.txt">file1</a>'s hash: dcd5365c19f172bc9237915520825acc3286b928cd7ac7b94b334a32c8796b60</p>
+<p class="startli">[x] <a href="./tests/1000_plus_random_2.txt">file2</a>'s hash: 6de5b4c6c84b91958f655e48e225335aa9e6ad3afbc8d6ef1c5ebc627b5d6016</p>
+</li>
+<li><p class="startli">Testing files with one different symbol:</p>
+<p class="startli">[x] <a href="./tests/1000_plus_one_diff_1.txt">file1</a>'s hash: 6de5b4c6c84b91958f655e48e225335aa9e6ad3afbc8d6ef1c5ebc627b5d6016</p>
+<p class="startli">[x] <a href="./tests/1000_plus_one_diff_2.txt">file2</a>'s hash: d01b43f59ccf6d99cb140de413bdcf7f20486a3f27ddbfa707585f9943344fe3</p>
+</li>
+</ol>
+<p >Conslusion: all of the files were hashed properly. Each file was produced with a hash unique to itself, each hash was 64 bytes long in hex format.</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Notes:</h1>
+<ol type="1">
 <li>Bare in mind that HashMap in the repo is the worst possible implementation of that specific data structure. I just needed faster wayt to test huge amounts of inputs, and bubble-type solution was just the worst in terms of performance, thus my shitty HashMap is there...</li>
 <li>I have deleted bubble test suite, because it had very poor performance and was not needed for further investigation of the algorithm's effectiveness. I strongly propose not to look for it, but if you want some meme content, try to look it up in the commits. It is somewhere there... </li>
 </ol>

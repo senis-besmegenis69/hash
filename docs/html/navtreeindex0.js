@@ -34,6 +34,7 @@ var NAVTREEINDEX0 =
 "index.html#autotoc_md3":[0,2],
 "index.html#autotoc_md4":[0,3],
 "index.html#autotoc_md5":[0,4],
+"index.html#autotoc_md6":[0,5],
 "modules.html":[1],
 "pages.html":[]
 };

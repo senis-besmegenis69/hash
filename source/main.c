@@ -182,6 +182,4 @@ int main(
 		free(content);
 		return result;
 	}
-
-	return 0;
 }
