@@ -59,7 +59,8 @@ Tests from requirements file...
 
 5. Testing that test file from point 4 with my 'very good hashmap..'. To test it, open hash_map.c file, edit the file name to be read. And runt it. In case of a collision, it will inform the user in the terminal. RESULTS: no collisions!
 
-6. TODO!!!
+6. Average binary percentage: 0.000002
+   Average hex percentage: 6.249945
 
 Conslusion: all of the files were hashed properly. Each file was produced with a hash unique to itself, each hash was 64 bytes long in hex format.
 
